@@ -19,7 +19,7 @@ public class Bootstrap {
 
         // manual java code config
         ApplicationContext context = new AnnotationConfigApplicationContext(BeanConfig.class);
-        Base b = context.getBean(D.class);
+        Base b = context.getBean(D.class );
         A a = new A(b);
         a.start();
 

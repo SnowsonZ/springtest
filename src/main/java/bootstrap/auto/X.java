@@ -3,6 +3,11 @@ package bootstrap.auto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import bootstrap.annotation.Coffee;
+import bootstrap.annotation.Cold;
+import bootstrap.annotation.Hot;
+import bootstrap.annotation.IceCream;
+
 /**
  * @author Snowson
  * @since 2019/10/27 22:25
@@ -10,14 +15,16 @@ import org.springframework.stereotype.Component;
 @Component
 public class X {
 
-    private Y y;
+    private Deliver d;
 
     @Autowired
-    public X(Y y) {
-        this.y = y;
+    @Hot
+    @Coffee
+    public X(Deliver d) {
+        this.d = d;
     }
 
     public void start() {
-        y.move();
+        d.move();
     }
 }
