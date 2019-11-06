@@ -17,4 +17,9 @@ public class Z implements Deliver {
     public void move() {
         System.out.println("z moved");
     }
+
+    @Override
+    public void moved(String name) {
+
+    }
 }

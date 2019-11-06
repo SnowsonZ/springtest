@@ -3,7 +3,6 @@ package bootstrap.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
-import org.springframework.context.annotation.Profile;
 
 import bootstrap.manual.B;
 import bootstrap.manual.C;

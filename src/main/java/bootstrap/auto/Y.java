@@ -18,4 +18,9 @@ public class Y implements Deliver {
     public void move() {
         System.out.println("y moved");
     }
+
+    @Override
+    public void moved(String name) {
+        System.out.println(name + " y moved");
+    }
 }

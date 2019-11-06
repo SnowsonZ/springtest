@@ -6,4 +6,5 @@ package bootstrap.auto;
  */
 public interface Deliver {
     void move();
+    void moved(String name);
 }

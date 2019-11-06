@@ -1,6 +1,7 @@
 package bootstrap.auto;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import bootstrap.annotation.Coffee;
@@ -17,14 +18,18 @@ public class X {
 
     private Deliver d;
 
+    @Value("${file.name}")
+    private String fileName;
+
     @Autowired
-    @Hot
-    @Coffee
+    @Cold
+    @IceCream
     public X(Deliver d) {
         this.d = d;
     }
 
     public void start() {
-        d.move();
+        System.out.println(fileName);
+        d.moved(fileName);
     }
 }

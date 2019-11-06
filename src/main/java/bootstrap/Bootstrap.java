@@ -27,5 +27,7 @@ public class Bootstrap {
         AnnotationConfigApplicationContext contextAuto = new AnnotationConfigApplicationContext(AutoConfig.class);
         X x = contextAuto.getBean(X.class);
         x.start();
+        x.start();
+        x.start();
     }
 }
