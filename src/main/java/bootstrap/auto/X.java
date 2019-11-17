@@ -4,9 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import bootstrap.annotation.Coffee;
 import bootstrap.annotation.Cold;
-import bootstrap.annotation.Hot;
 import bootstrap.annotation.IceCream;
 
 /**
@@ -31,5 +29,6 @@ public class X {
     public void start() {
         System.out.println(fileName);
         d.moved(fileName);
+        d.moved(999);
     }
 }

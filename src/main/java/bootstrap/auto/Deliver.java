@@ -6,5 +6,10 @@ package bootstrap.auto;
  */
 public interface Deliver {
     void move();
+
     void moved(String name);
+
+    default void moved(int num) {
+        System.out.println("num: " + num);
+    }
 }

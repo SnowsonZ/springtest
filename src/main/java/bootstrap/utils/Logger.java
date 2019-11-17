@@ -30,6 +30,11 @@ public class Logger {
     public void count(String name) {
     }
 
+    @Pointcut("execution(* bootstrap.auto.Deliver.moved(int)) && args(num)")
+    public void test(int num) {
+
+    }
+
     @Before("process()")
     public void start() {
         System.out.println("fly start...");
@@ -66,6 +71,11 @@ public class Logger {
     public void calculate(String name) {
         playCount.put(name, getCurrentCount(name) + 1);
         System.out.println(playCount.toString());
+    }
+
+    @Before("test(num)")
+    public void num1(int num) {
+        System.out.println("num1 pointcut: " + num);
     }
 
     public int getCurrentCount(String name) {
