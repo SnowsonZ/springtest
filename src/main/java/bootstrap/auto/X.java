@@ -11,7 +11,7 @@ import bootstrap.annotation.IceCream;
  * @author Snowson
  * @since 2019/10/27 22:25
  */
-@Component
+//@Component
 public class X {
 
     private Deliver d;
