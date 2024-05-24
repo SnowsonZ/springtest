@@ -14,9 +14,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Aspect: 切面
- * Pointcut: 切入点
- * process/count: 连接点
  *
  * @author Snowson
  * @since 2019/10/24 15:16

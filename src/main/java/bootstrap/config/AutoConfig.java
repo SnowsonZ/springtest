@@ -1,5 +1,9 @@
 package bootstrap.config;
 
+import bootstrap.annotation.Coffee;
+import bootstrap.annotation.Hot;
+import bootstrap.auto.Deliver;
+import bootstrap.rpc.MetricQueryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
@@ -8,8 +12,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.remoting.rmi.RmiServiceExporter;
-
-import bootstrap.rpc.MetricQueryService;
 
 /**
  * @author Snowson
@@ -20,9 +22,23 @@ import bootstrap.rpc.MetricQueryService;
 @EnableAspectJAutoProxy(proxyTargetClass = true)
 public class AutoConfig {
 
-    @Qualifier("aaa")
-    @Autowired
     MetricQueryService service;
+    Deliver deliver;
+
+    public AutoConfig() {
+        System.out.println("");
+    }
+
+    public AutoConfig(@Qualifier("aaa") MetricQueryService service) {
+        this.service = service;
+    }
+
+    @Autowired
+    public AutoConfig(@Qualifier("ddd") MetricQueryService service, @Hot @Coffee Deliver deliver) {
+        this.service = service;
+        this.deliver = deliver;
+        System.out.println("init " + getClass().getSimpleName() + ", deliver: " + deliver.getClass().getSimpleName());
+    }
 
     @Bean
     public static PropertyPlaceholderConfigurer placeholderConfigurer() {
@@ -30,12 +46,11 @@ public class AutoConfig {
     }
 
     @Bean
-    public RmiServiceExporter rmiExporter() {
+    public RmiServiceExporter rmiExporter(@Qualifier("aaa") MetricQueryService service1) {
         RmiServiceExporter e = new RmiServiceExporter();
-        e.setService(service);
+        e.setService(service1);
         e.setServiceInterface(MetricQueryService.class);
         e.setServiceName("metricQueryService");
-
         return e;
     }
 
