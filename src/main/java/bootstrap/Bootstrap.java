@@ -3,7 +3,6 @@ package bootstrap;
 import bootstrap.aop.Water;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.remoting.rmi.RmiServiceExporter;
 
 import bootstrap.config.AutoConfig;
 import bootstrap.config.BeanConfig;
@@ -30,9 +29,6 @@ public class Bootstrap {
 
     public void autoInjectTest() {
         AnnotationConfigApplicationContext contextAuto = new AnnotationConfigApplicationContext(AutoConfig.class);
-        final RmiServiceExporter exporter = contextAuto.getBean(RmiServiceExporter.class);
-        System.out.println(exporter.getService().toString());
-
         final Water coffee = (Water) contextAuto.getBean("water");
         coffee.printTemperature();
     }
