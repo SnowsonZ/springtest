@@ -1,5 +1,6 @@
 package bootstrap.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
 import org.springframework.context.annotation.Bean;
@@ -15,14 +16,13 @@ import bootstrap.rpc.MetricQueryService;
  * @since 2019/10/27 22:35
  */
 @Configuration
-@ComponentScan(basePackages = {"bootstrap.auto", "bootstrap.utils", "bootstrap.rpc"})
+@ComponentScan(basePackages = {"bootstrap.auto", "bootstrap.utils", "bootstrap.rpc", "bootstrap.aop"})
 @EnableAspectJAutoProxy(proxyTargetClass = true)
 public class AutoConfig {
 
-    final MetricQueryService service;
-    public AutoConfig(@Qualifier("ddd") MetricQueryService service) {
-        this.service = service;
-    }
+    @Qualifier("aaa")
+    @Autowired
+    MetricQueryService service;
 
     @Bean
     public static PropertyPlaceholderConfigurer placeholderConfigurer() {

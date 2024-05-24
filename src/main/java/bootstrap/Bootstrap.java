@@ -1,7 +1,12 @@
 package bootstrap;
 
+import bootstrap.aop.Coffee;
+import bootstrap.aop.ProxyFactoryBeanImpl;
+import bootstrap.aop.Water;
+import org.springframework.aop.framework.ProxyFactoryBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.Bean;
 import org.springframework.remoting.rmi.RmiServiceExporter;
 
 import bootstrap.config.AutoConfig;
@@ -31,5 +36,9 @@ public class Bootstrap {
         AnnotationConfigApplicationContext contextAuto = new AnnotationConfigApplicationContext(AutoConfig.class);
         final RmiServiceExporter exporter = contextAuto.getBean(RmiServiceExporter.class);
         System.out.println(exporter.getService().toString());
+
+        final Water coffee = (Water) contextAuto.getBean("water");
+        coffee.printTemperature();
     }
+
 }

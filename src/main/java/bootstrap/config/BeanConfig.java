@@ -1,5 +1,7 @@
 package bootstrap.config;
 
+import bootstrap.aop.Coffee;
+import org.springframework.aop.framework.ProxyFactoryBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
