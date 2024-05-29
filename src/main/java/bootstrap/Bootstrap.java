@@ -1,6 +1,7 @@
 package bootstrap;
 
 import bootstrap.aop.Water;
+import org.springframework.cglib.core.DebuggingClassWriter;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -16,6 +17,8 @@ import bootstrap.manual.D;
  */
 public class Bootstrap {
     public static void main(String[] args) {
+        System.getProperties().put("sun.misc.ProxyGenerator.saveGeneratedFiles", "true");
+        System.setProperty(DebuggingClassWriter.DEBUG_LOCATION_PROPERTY, "target/classes/cglib");
         final Bootstrap bootstrap = new Bootstrap();
         bootstrap.autoInjectTest();
     }
