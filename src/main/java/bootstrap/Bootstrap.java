@@ -1,15 +1,14 @@
 package bootstrap;
 
 import bootstrap.aop.Water;
-import org.springframework.cglib.core.DebuggingClassWriter;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-
 import bootstrap.config.AutoConfig;
 import bootstrap.config.BeanConfig;
 import bootstrap.manual.A;
 import bootstrap.manual.Base;
 import bootstrap.manual.D;
+import org.springframework.cglib.core.DebuggingClassWriter;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 /**
  * @author Snowson
@@ -32,7 +31,11 @@ public class Bootstrap {
 
     public void autoInjectTest() {
         AnnotationConfigApplicationContext contextAuto = new AnnotationConfigApplicationContext(AutoConfig.class);
-        final Water coffee = (Water) contextAuto.getBean("water");
+        String beanName = "xxx";
+        System.out.println("proto type: " + contextAuto.isPrototype(beanName));
+
+        beanName = "coffee";
+        final Water coffee = (Water) contextAuto.getBean(beanName);
         coffee.printTemperature();
     }
 
